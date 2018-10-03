@@ -11,20 +11,20 @@ class Rating extends React.Component {
     };
   }
   componentWillReceiveProps(nextProps){
-  switch (nextProps.rating) {
-    case 'loved it':
+    if(nextProps.rating>this.props.rating){
       this.setState({increasing:true,decreasing:false})
-      break;
-    case 'hated it':
-    this.setState({increasing:false,decreasing:true})
-
-      break;
-    case 'indifferent':
-    this.setState({increasing:false,decreasing:false})
-
-      break;
-    default:
       
+    }
+    else if (nextProps.rating<this.props.rating){
+      this.setState({increasing:false,decreasing:true})
+      
+    }
+    else{
+      this.setState({increasing:false,decreasing:false})
+      
+    }
+  
+
   }
   }
   render() {
